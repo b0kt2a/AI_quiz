@@ -1,14 +1,13 @@
 {
   "name": "ai-description-quiz-admin",
-  "version": "2.0.0",
-  "description": "AI 묘사 퀴즈 - Admin / GM / Screen",
+  "version": "3.0.0",
+  "description": "AI 묘사 퀴즈 - 무료 Render / repo assets / Admin + GM + Screen",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
     "express": "^4.21.2",
-    "multer": "^1.4.5-lts.1",
     "socket.io": "^4.8.1"
   }
 }

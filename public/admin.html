@@ -16,8 +16,21 @@
       <a class="linkbtn" href="/gm" target="_blank">GM 열기</a>
     </header>
 
+    <section class="notice">
+      <strong>무료 Render 모드</strong>
+      <span>영상은 <code>public/videos</code>, 포스터는 <code>public/posters</code>에 넣고 GitHub에 푸시해줘. Admin 수정은 현재 서버에 바로 반영돼.</span>
+    </section>
+
     <section class="panel">
-      <h2 id="formTitle">새 문제 등록</h2>
+      <div class="panel-title-row">
+        <h2 id="formTitle">새 문제 등록</h2>
+        <div class="backup-actions">
+          <button type="button" id="exportBtn" class="secondary">설정 백업</button>
+          <label class="import-label secondary">설정 불러오기<input id="importFile" type="file" accept="application/json,.json"></label>
+          <button type="button" id="resetBtn" class="danger">GitHub 기본값 복원</button>
+        </div>
+      </div>
+
       <form id="questionForm">
         <input type="hidden" id="editingId">
 
@@ -39,7 +52,7 @@
 
           <label>
             <span>난이도</span>
-            <input id="difficulty" name="difficulty" placeholder="예: 3/5">
+            <input id="difficulty" name="difficulty" placeholder="예: ★★★☆">
           </label>
 
           <label>
@@ -47,14 +60,14 @@
             <input id="playtime" name="playtime" placeholder="예: 60분">
           </label>
 
-          <label class="wide">
-            <span>묘사 영상 MP4 <b id="videoRequired">*</b></span>
-            <input id="video" name="video" type="file" accept="video/mp4,video/webm">
+          <label>
+            <span>묘사 영상 <b>*</b></span>
+            <select id="video" name="video" required></select>
           </label>
 
           <label class="wide">
             <span>정답 포스터</span>
-            <input id="poster" name="poster" type="file" accept="image/*">
+            <select id="poster" name="poster"></select>
           </label>
         </div>
 
@@ -71,7 +84,7 @@
       <div class="list-head">
         <div>
           <h2>문제 목록</h2>
-          <p>↑ ↓ 로 순서를 바꾸면 즉시 저장돼.</p>
+          <p>맨 첫 번째 항목은 항상 연습문제, 두 번째부터 문제 01로 표시돼.</p>
         </div>
         <strong id="count">0문제</strong>
       </div>

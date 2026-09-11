@@ -2,16 +2,10 @@ services:
   - type: web
     name: ai-description-quiz
     runtime: node
-    plan: 0.5c-512mb
+    plan: free
     buildCommand: npm ci
     startCommand: npm start
     healthCheckPath: /health
     envVars:
       - key: NODE_VERSION
         value: 22
-      - key: DATA_DIR
-        value: /var/data/ai-quiz
-    disk:
-      name: ai-quiz-data
-      mountPath: /var/data
-      sizeGB: 2
