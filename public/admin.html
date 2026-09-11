@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 묘사 퀴즈 - Admin</title>
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <div>
+        <div class="eyebrow">AI DESCRIPTION QUIZ</div>
+        <h1>문제 관리</h1>
+      </div>
+      <a class="linkbtn" href="/gm" target="_blank">GM 열기</a>
+    </header>
+
+    <section class="panel">
+      <h2 id="formTitle">새 문제 등록</h2>
+      <form id="questionForm">
+        <input type="hidden" id="editingId">
+
+        <div class="grid">
+          <label>
+            <span>테마 제목</span>
+            <input id="title" name="title" required>
+          </label>
+
+          <label>
+            <span>매장명</span>
+            <input id="store" name="store">
+          </label>
+
+          <label>
+            <span>장르</span>
+            <input id="genre" name="genre">
+          </label>
+
+          <label>
+            <span>난이도</span>
+            <input id="difficulty" name="difficulty" placeholder="예: 3/5">
+          </label>
+
+          <label>
+            <span>플레이타임</span>
+            <input id="playtime" name="playtime" placeholder="예: 60분">
+          </label>
+
+          <label class="wide">
+            <span>묘사 영상 MP4 <b id="videoRequired">*</b></span>
+            <input id="video" name="video" type="file" accept="video/mp4,video/webm">
+          </label>
+
+          <label class="wide">
+            <span>정답 포스터</span>
+            <input id="poster" name="poster" type="file" accept="image/*">
+          </label>
+        </div>
+
+        <div class="form-actions">
+          <button class="primary" type="submit" id="saveBtn">문제 등록</button>
+          <button type="button" id="cancelEdit" class="secondary hidden">수정 취소</button>
+        </div>
+
+        <div id="message"></div>
+      </form>
+    </section>
+
+    <section class="panel">
+      <div class="list-head">
+        <div>
+          <h2>문제 목록</h2>
+          <p>↑ ↓ 로 순서를 바꾸면 즉시 저장돼.</p>
+        </div>
+        <strong id="count">0문제</strong>
+      </div>
+
+      <div id="questionList" class="question-list"></div>
+    </section>
+  </main>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/admin.js"></script>
+</body>
+</html>

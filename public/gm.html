@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 묘사 퀴즈 - GM</title>
+  <link rel="stylesheet" href="/css/gm.css">
+</head>
+<body>
+  <main class="gm-wrap">
+    <header>
+      <div>
+        <div class="eyebrow">AI DESCRIPTION QUIZ</div>
+        <h1>GM CONTROL</h1>
+      </div>
+      <div id="connection">연결 중...</div>
+    </header>
+
+    <section class="current-card">
+      <div class="qno"><span id="qLabel">연습문제</span> <span id="number"></span></div>
+      <h2 id="title">등록된 문제가 없어</h2>
+      <div id="store" class="store"></div>
+      <div id="phase" class="phase">대기 중</div>
+      <div id="ended" class="ended hidden">영상 재생 끝!</div>
+    </section>
+
+    <section class="controls">
+      <button id="startBtn" class="primary">▶ 문제 시작</button>
+      <button id="replayBtn">↻ 다시 재생</button>
+      <button id="answerBtn" class="answer">정답 공개</button>
+      <button id="nextBtn" class="next">다음 문제 →</button>
+    </section>
+
+    <p class="hint">다음 문제를 눌러도 자동 재생되지 않아. 다음 문제 화면에서 다시 ‘문제 시작’을 눌러야 해.</p>
+  </main>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/gm.js"></script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background: #07080c;
+  color: white;
+  font-family: Arial, "Noto Sans KR", sans-serif;
+  overflow: hidden;
+}
+#app, .view {
+  width: 100%;
+  height: 100%;
+}
+.view {
+  display: none;
+  position: relative;
+}
+.view.active { display: flex; }
+
+#waiting {
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  background:
+    radial-gradient(circle at 50% 38%, rgba(116,90,255,.18), transparent 32%),
+    #07080c;
+}
+.eyebrow {
+  font-size: 17px;
+  letter-spacing: .35em;
+  opacity: .5;
+  margin-bottom: 22px;
+}
+#waiting h1 {
+  margin: 0;
+  font-size: clamp(48px, 6vw, 95px);
+  line-height: 1.12;
+}
+.qno {
+  margin-top: 42px;
+  font-size: clamp(40px, 5vw, 78px);
+  font-weight: 900;
+}
+#waiting p {
+  margin-top: 18px;
+  font-size: 24px;
+  opacity: .55;
+}
+
+#playing {
+  align-items: center;
+  justify-content: center;
+  background: black;
+}
+.screen-top {
+  position: absolute;
+  z-index: 5;
+  top: 22px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 800;
+  text-shadow: 0 2px 12px rgba(0,0,0,.75);
+}
+#video {
+  width: 100vw;
+  height: 100vh;
+  object-fit: contain;
+  background: black;
+}
+
+#answer {
+  align-items: center;
+  justify-content: center;
+}
+.answer-grid {
+  width: min(1500px, 88vw);
+  display: grid;
+  grid-template-columns: minmax(350px, .85fr) 1.15fr;
+  align-items: center;
+  gap: 80px;
+}
+.poster-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.poster-box img {
+  max-width: 100%;
+  max-height: 75vh;
+  object-fit: contain;
+  border-radius: 18px;
+  box-shadow: 0 24px 70px rgba(0,0,0,.4);
+}
+.answer-label {
+  font-size: 24px;
+  opacity: .55;
+  margin-bottom: 12px;
+}
+.info h2 {
+  margin: 0 0 24px;
+  font-size: clamp(48px, 5.5vw, 96px);
+  line-height: 1.05;
+}
+.info .store {
+  font-size: 32px;
+  margin-bottom: 24px;
+}
+.meta {
+  font-size: 24px;
+  opacity: .7;
+}
+.sep { margin: 0 12px; opacity: .4; }
+
+@media (max-width: 900px) {
+  .answer-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    text-align: center;
+  }
+  .poster-box img { max-height: 45vh; }
+}

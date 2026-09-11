@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 묘사 퀴즈 - Screen</title>
+  <link rel="stylesheet" href="/css/screen.css">
+</head>
+<body>
+  <main id="app">
+    <section id="waiting" class="view active">
+      <div class="eyebrow">AI DESCRIPTION QUIZ</div>
+      <h1>AI가 묘사하는<br>방탈출 포스터는?</h1>
+      <div class="qno"><span id="waitLabel">연습문제</span> <span id="waitNum"></span></div>
+      <p>준비되면 묘사가 시작됩니다.</p>
+    </section>
+
+    <section id="playing" class="view">
+      <div class="screen-top"><span id="playLabel">연습문제</span> <span id="playNum"></span></div>
+      <video id="video" playsinline preload="auto"></video>
+    </section>
+
+    <section id="answer" class="view">
+      <div class="screen-top"><span id="answerLabel">연습문제</span> <span id="answerNum"></span></div>
+      <div class="answer-grid">
+        <div class="poster-box">
+          <img id="poster" alt="">
+        </div>
+        <div class="info">
+          <div class="answer-label">정답</div>
+          <h2 id="answerTitle"></h2>
+          <div id="answerStore" class="store"></div>
+          <div class="meta">
+            <span id="answerGenre"></span>
+            <span class="sep">|</span>
+            <span id="answerDifficulty"></span>
+            <span class="sep">|</span>
+            <span id="answerPlaytime"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/screen.js"></script>
+</body>
+</html>
