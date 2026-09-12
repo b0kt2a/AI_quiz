@@ -138,10 +138,16 @@ app.post("/api/questions/reset", (req, res) => {
   res.json({ ok: true, count: questions.length });
 });
 
+const DEFAULT_TEAMS = Array.from({ length: 5 }, (_, i) => ({
+  name: `${i + 1}팀`,
+  score: 0
+}));
+
 let state = {
   currentIndex: 0,
   phase: "waiting", // waiting | playing | answer
-  playToken: 0
+  playToken: 0,
+  teams: DEFAULT_TEAMS.map(team => ({ ...team }))
 };
 
 function emitState() {
@@ -176,6 +182,36 @@ io.on("connection", (socket) => {
     state.currentIndex = Math.min(state.currentIndex + 1, questions.length - 1);
     state.phase = "waiting";
     state.playToken += 1;
+    emitState();
+  });
+
+  socket.on("team:updateName", payload => {
+    const index = Number(payload?.index);
+    if (!Number.isInteger(index) || index < 0 || index >= state.teams.length) return;
+    const name = String(payload?.name || "").trim().slice(0, 20);
+    state.teams[index].name = name || `${index + 1}팀`;
+    emitState();
+  });
+
+  socket.on("team:setScore", payload => {
+    const index = Number(payload?.index);
+    const score = Number.parseInt(payload?.score, 10);
+    if (!Number.isInteger(index) || index < 0 || index >= state.teams.length) return;
+    state.teams[index].score = Number.isFinite(score) ? score : 0;
+    emitState();
+  });
+
+  socket.on("team:delta", payload => {
+    const index = Number(payload?.index);
+    const delta = Number.parseInt(payload?.delta, 10);
+    if (!Number.isInteger(index) || index < 0 || index >= state.teams.length) return;
+    if (!Number.isFinite(delta)) return;
+    state.teams[index].score = (Number(state.teams[index].score) || 0) + delta;
+    emitState();
+  });
+
+  socket.on("team:resetScores", () => {
+    state.teams.forEach(team => { team.score = 0; });
     emitState();
   });
 

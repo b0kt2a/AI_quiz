@@ -191,3 +191,16 @@ button:disabled { opacity: .25; cursor: default; }
   .panel-title-row { flex-direction: column; }
   .backup-actions { justify-content: flex-start; }
 }
+
+/* 테마 제목은 Enter 줄바꿈을 저장할 수 있도록 textarea 사용 */
+textarea {
+  width: 100%;
+  min-height: 72px;
+  resize: vertical;
+  font: inherit;
+}
+label span small {
+  font-size: 12px;
+  font-weight: 500;
+  opacity: .55;
+}

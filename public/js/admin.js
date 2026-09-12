@@ -50,7 +50,7 @@ function render() {
         ${q.poster ? `<img src="${escapeAttr(q.poster)}" alt="">` : `<div class="noimg">NO POSTER</div>`}
       </div>
       <div class="qinfo">
-        <strong>${escapeHtml(q.title || "(제목 없음)")}</strong>
+        <strong>${escapeHtml((q.title || "(제목 없음)").replace(/\n/g, " / "))}</strong>
         <span>${escapeHtml(q.store || "")}</span>
         <small>${escapeHtml(fileName(q.video))}${q.genre ? ` · ${escapeHtml(q.genre)}` : ""}${q.difficulty ? ` · ${escapeHtml(q.difficulty)}` : ""}${q.playtime ? ` · ${escapeHtml(q.playtime)}` : ""}</small>
       </div>

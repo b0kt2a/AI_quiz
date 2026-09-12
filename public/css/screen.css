@@ -73,53 +73,80 @@ html, body {
 }
 
 #answer {
-  align-items: center;
-  justify-content: center;
+  position: relative;
 }
 .answer-grid {
-  width: min(1500px, 88vw);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   display: grid;
-  grid-template-columns: minmax(350px, .85fr) 1.15fr;
+  grid-template-columns: minmax(360px, 520px) minmax(560px, 780px);
   align-items: center;
-  gap: 80px;
+  justify-content: center;
+  gap: clamp(50px, 5vw, 90px);
+  width: max-content;
+  max-width: calc(100vw - 100px);
+  padding-top: 18px;
 }
 .poster-box {
+  width: 100%;
+  height: min(72vh, 690px);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .poster-box img {
+  display: block;
   max-width: 100%;
-  max-height: 75vh;
+  max-height: 100%;
   object-fit: contain;
   border-radius: 18px;
   box-shadow: 0 24px 70px rgba(0,0,0,.4);
 }
-.answer-label {
-  font-size: 24px;
-  opacity: .55;
-  margin-bottom: 12px;
-}
-.info h2 {
-  margin: 0 0 24px;
-  font-size: clamp(48px, 5.5vw, 96px);
-  line-height: 1.05;
+.info {
+  width: 100%;
+  min-width: 0;
 }
 .info .store {
-  font-size: 32px;
-  margin-bottom: 24px;
+  font-size: clamp(24px, 2vw, 34px);
+  font-weight: 700;
+  margin-bottom: 14px;
+  opacity: .92;
+}
+.info h2 {
+  margin: 0 0 30px;
+  font-size: clamp(48px, 4.6vw, 82px);
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  white-space: pre-line;
+  word-break: keep-all;
+  overflow-wrap: normal;
 }
 .meta {
   font-size: 24px;
   opacity: .7;
+  white-space: nowrap;
 }
 .sep { margin: 0 12px; opacity: .4; }
 
-@media (max-width: 900px) {
+@media (max-width: 1050px) {
   .answer-grid {
-    grid-template-columns: 1fr;
-    gap: 28px;
-    text-align: center;
+    grid-template-columns: minmax(300px, 42vw) minmax(400px, 48vw);
+    gap: 34px;
+    max-width: calc(100vw - 48px);
   }
-  .poster-box img { max-height: 45vh; }
+  .poster-box { height: 66vh; }
+}
+
+@media (max-width: 760px) {
+  .answer-grid {
+    width: calc(100vw - 32px);
+    grid-template-columns: 1fr;
+    gap: 24px;
+    text-align: center;
+    padding-top: 58px;
+  }
+  .poster-box { height: 42vh; }
+  .meta { white-space: normal; }
 }
